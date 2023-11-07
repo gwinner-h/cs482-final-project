@@ -124,9 +124,7 @@ def who_played(player):
 
 """ set test to true to print strings with useful information
 where applicable to be certain this works correctly
-the joke is no, of course it doesn't. anyway,
-it will output strings to confirm certain values 
-just set the test variable to True to run the test """
+the joke is no, of course it doesn't. anyway... """
 test = False
 
 
