@@ -7,8 +7,7 @@
             terrain, and hazards that are present.
 
 i think this is entirely just a nasty hackjob
-200 lines if nested if statements and for loops
-"""
+200 lines if nested if statements and for loops """
 import os
 import datetime
 
@@ -19,9 +18,7 @@ outcome     = "outcome"
 snow        = "Snow"       
 rain        = "RainDance"  
 sunny       = "SunnyDay"   
-sand        = "Sandstorm" 
-hail        = "Hail"            
-fog         = "Fog"       
+sand        = "Sandstorm"     
 grass       = "Grassy Terrain"  
 mist        = "Misty Terrain"   
 electric    = "Electric Terrain"
@@ -39,8 +36,6 @@ headers = {
     'rain':rain, 
     'sunny':sunny, 
     'sand':sand, 
-    'hail':hail, 
-    'fog':fog,
     'grass':grass, 
     'mist':mist, 
     'electric':electric, 
@@ -54,7 +49,7 @@ headers = {
     'aurora':aurora
 }
 classlabels = {
-    "weather": [snow, rain, sunny, sand, hail, fog],
+    "weather": [snow, rain, sunny, sand],
     "terrain": [grass, mist, electric, psychic],
     "hazards": [stealthrock, spikes, toxicspikes, 
                 stickyweb, reflect, lightscreen, aurora]
@@ -63,18 +58,6 @@ classlabels = {
 """ player 1 and player 2 """
 p1 = 1
 p2 = 2
-
-""" set folder path and output file path, 
-    then open the output file for writing """
-dirp = "G:/Shared drives/final learning machine/logs/"
-outp = "aouttest.txt"
-
-""" set test to true to print strings with useful information
-where applicable to be certain this works correctly
-the joke is no, of course it doesn't. anyway,
-it will output strings to confirm certain values 
-just set the test variable to True to run the test """
-test = False
 
 """ a bunch of functions that could have been coded a hell of a lot better """
 def get_player(line): return line.split("|")[3]
@@ -139,10 +122,24 @@ def who_played(player):
     return None
 
 
+""" set test to true to print strings with useful information
+where applicable to be certain this works correctly
+the joke is no, of course it doesn't. anyway,
+it will output strings to confirm certain values 
+just set the test variable to True to run the test """
+test = False
+
+
+""" set folder path and output file path, 
+    then open the output file for writing """
+dirp = "G:/Shared drives/final learning machine/logs/"
+
+
 if test:
     out = "astringtest.txt"
 else:
     out = "aout.txt"
+
 
 outfile = os.path.join(dirp, out)
 outputfile = open(outfile, "w")
@@ -228,7 +225,7 @@ for filename in os.listdir(dirp):
                                     else: data.append(playedweather)
                                 else: data.append("0")
                         else: 
-                            if test: data.append("||NO,WE,AT,H,E,R||")
+                            if test: data.append(",,|NO WEATHER|,,")
                             else:
                                 for i in range(len(classlabels["weather"])): data.append("0")
 
@@ -240,7 +237,7 @@ for filename in os.listdir(dirp):
                                     else: data.append(playedterrain)
                                 else: data.append("0")
                         else: 
-                            if test: data.append("||NO,FIELD,TERR,AIN||")
+                            if test: data.append(",,|NO TERRAIN|,,")
                             else: 
                                 for i in range(len(classlabels['terrain'])): data.append("0")
 
@@ -252,7 +249,7 @@ for filename in os.listdir(dirp):
                                     else: data.append(playedhazard)
                                 else: data.append("0")
                         else:
-                            if test: data.append("||NO,H,A,Z,A,R,D,S||")
+                            if test: data.append(",,,|NO HAZARDS|,,,,")
                             else:
                                 for i in range(len(classlabels["hazards"])): data.append("0")
 
@@ -263,7 +260,7 @@ for filename in os.listdir(dirp):
                         outputfile.write("\n")
                     
                     else:
-                        if test: outputfile.write("__NO_FUTURE__no useful data in this file\n")
+                        if test: outputfile.write("__NO_FUTURE__no useful data in this file ~smile~\n")
                 
                     
 

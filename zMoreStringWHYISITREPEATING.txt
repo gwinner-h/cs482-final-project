@@ -1,0 +1,139 @@
+2023-11-07 06:32:48.167168
+outcome,snow,rain,sunny,sand,hail,fog,grass,mist,electric,psychic,stealthrock,spikes,toxicspikes,stickyweb,reflect,lightscreen,aurora,
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  LT101LK Chris v LT101LK Stardust
+2,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Mansonabuluting v OUVT TOSHI
+2,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Mansonabuluting v OUVT TOSHI
+2,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Mansonabuluting v OUVT TOSHI
+2,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Mansonabuluting v OUVT TOSHI
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Hax-98 v garbancete
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Hax-98 v garbancete
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Hax-98 v garbancete
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Hax-98 v garbancete
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Hax-98 v garbancete
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  OmarionX98 v purojoto
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  OmarionX98 v purojoto
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  OmarionX98 v purojoto
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  OmarionX98 v purojoto
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  FearOfGodDrip v avaluggsimp
+2,||NO,WE,AT,H,E,R||,0,0,0,0,||NO,H,A,Z,A,R,D,S||,    >>>>  yuplostpassword v Shauwnn#n
+2,||NO,WE,AT,H,E,R||,0,0,0,0,||NO,H,A,Z,A,R,D,S||,    >>>>  yuplostpassword v Shauwnn#n
+2,||NO,WE,AT,H,E,R||,0,0,0,0,||NO,H,A,Z,A,R,D,S||,    >>>>  yuplostpassword v Shauwnn#n
+2,||NO,WE,AT,H,E,R||,0,0,0,0,||NO,H,A,Z,A,R,D,S||,    >>>>  yuplostpassword v Shauwnn#n
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,Sticky Web<2>,0,0,0,    >>>>  lol man1111 v retrowarrior490
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,Sticky Web<2>,0,0,0,    >>>>  lol man1111 v retrowarrior490
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,Sticky Web<2>,0,0,0,    >>>>  lol man1111 v retrowarrior490
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,Sticky Web<2>,0,0,0,    >>>>  lol man1111 v retrowarrior490
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,Sticky Web<2>,0,0,0,    >>>>  lol man1111 v retrowarrior490
+2,0,0,0,0,0,0,0,0,0,0,0,0,0,Sticky Web<2>,0,0,0,    >>>>  lol man1111 v retrowarrior490
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Mitsukaichi v jaozinx
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Mitsukaichi v jaozinx
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  ouvt ian v elqixr
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  ouvt ian v elqixr
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  ouvt ian v elqixr
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  ouvt ian v elqixr
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Audio Peel v TheGr8est2EverDoIt
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Audio Peel v TheGr8est2EverDoIt
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Audio Peel v TheGr8est2EverDoIt
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Audio Peel v TheGr8est2EverDoIt
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Audio Peel v TheGr8est2EverDoIt
+2,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  SOUTHPAWKLAW v fupizza
+2,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  SOUTHPAWKLAW v fupizza
+2,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  KendrickLamar(real v Blurred_Ace
+2,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  KendrickLamar(real v Blurred_Ace
+2,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  KendrickLamar(real v Blurred_Ace
+2,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,||NO,H,A,Z,A,R,D,S||,    >>>>  KendrickLamar(real v Blurred_Ace
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hjedfrtnghiuoe v shilohlikespokemon
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hjedfrtnghiuoe v shilohlikespokemon
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hjedfrtnghiuoe v shilohlikespokemon
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hjedfrtnghiuoe v shilohlikespokemon
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  dyldude v Swizzlle
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  dyldude v Swizzlle
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  dyldude v Swizzlle
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  dyldude v Swizzlle
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+1,0,0,0,0,0,0,||NO,FIELD,TERR,AIN||,0,0,0,0,0,0,Aurora Veil<1>,    >>>>  yomommasbf v NovaContext
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,0,Spikes<1>,0,0,0,0,0,    >>>>  Vicious_Sid v Gregory Mirabella
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hacks1341 v wild dog king
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hacks1341 v wild dog king
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hacks1341 v wild dog king
+1,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  hacks1341 v wild dog king
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Turn tables have v ShizuOsaka
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Turn tables have v ShizuOsaka
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Turn tables have v ShizuOsaka
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Turn tables have v ShizuOsaka
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  Turn tables have v ShizuOsaka
+1,||NO,WE,AT,H,E,R||,0,0,0,0,Stealth Rock<2>,0,0,0,0,0,0,    >>>>  whisperingeyez v Bmoc19
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  general mud v MightyMike3
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  general mud v MightyMike3
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  general mud v MightyMike3
+2,||NO,WE,AT,H,E,R||,||NO,FIELD,TERR,AIN||,Stealth Rock<1>,0,0,0,0,0,0,    >>>>  general mud v MightyMike3
+1,||NO,WE,AT,H,E,R||,0,0,0,0,||NO,H,A,Z,A,R,D,S||,    >>>>  guzmfran v AHumanoidBeing
+1,||NO,WE,AT,H,E,R||,0,0,0,0,||NO,H,A,Z,A,R,D,S||,    >>>>  guzmfran v AHumanoidBeing
+
+
+
+>>>> let em kno that highd was here >>>>

@@ -1,0 +1,1 @@
+Snow,RainDance,SunnyDay,Sandstorm,Hail,Fog,Grassy Terrain,Misty Terrain,Electric Terrain,Psychic Terrain,Stealth Rock,Spikes,Toxic Spikes,Sticky Web,Reflect,Light Screen,Aurora Veil
