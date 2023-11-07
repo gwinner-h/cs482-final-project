@@ -63,70 +63,40 @@ p2 = 2
 def get_player(line): return line.split("|")[3]
 
 def get_weather(line):
-    """ _summary_: returns the weather and who played it
-        _params_: line - a line from the log file
-        _return_: weather - the weather that was played
-                  who_played - who played the weather """
     for weather in classlabels["weather"]:
         if weather in line:
-            if p1a in line:
-                return weather, p1
-            elif p2a in line:
-                return weather, p2
+            if p1a in line:   return weather, p1
+            elif p2a in line: return weather, p2
     return None, None
 
 def get_terrain(line):
-    """ _summary_: returns the field and who played it
-        _params_: line - a line from the log file
-        _return_: field - the field that was played
-                  who_played - who played the field"""
     for terrain in classlabels["terrain"]:
         if terrain in line:
-            if p1a in line:
-                return terrain, p1
-            elif p2a in line:
-                return terrain, p2
+            if p1a in line:   return terrain, p1
+            elif p2a in line: return terrain, p2
     return None, None
 
 def get_hazard(line):
-    """ _summary_: returns the hazard and who played it
-        _params_: line - a line from the log file
-        _return_: hazard - the hazard that was played
-                  who_played - who played the hazard"""
     for hazard in classlabels["hazards"]:
         if hazard in line:
-            if p1a in line:
-                return hazard, p1
-            elif p2a in line:
-                return hazard, p2
+            if p1a in line:   return hazard, p1
+            elif p2a in line: return hazard, p2
     return None, None
 
 def get_outcome(line, p1a, p2a):
-    """ _summary_: returns the outcome of the game
-        _params_: line - a line from the log file
-        _return_: outcome - the outcome of the game """
-    if p1a in line:
-        return p1   # 1
-    elif p2a in line:
-        return p2   # 2
+    if p1a in line:   return p1   # 1
+    elif p2a in line: return p2   # 2
     return None
 
 def who_played(player):
-    """ _summary_: returns the player that played the move
-        _params_: player - the player that played the move
-        _return_: the player that played the move """
-    if player == p1a:
-        return p1
-    elif player == p2a:
-        return p2
+    if player == p1a:   return p1
+    elif player == p2a: return p2
     return None
 
 
 """ set test to true to print strings with useful information
 where applicable to be certain this works correctly
-the joke is no, of course it doesn't. anyway,
-it will output strings to confirm certain values 
-just set the test variable to True to run the test """
+the joke is no, of course it doesn't. anyway... """
 test = False
 
 
@@ -135,10 +105,8 @@ test = False
 dirp = "G:/Shared drives/final learning machine/logs/"
 
 
-if test:
-    out = "astringtest.txt"
-else:
-    out = "aout.txt"
+if test: out = "astringtest.txt"
+else: out = "aout.txt"
 
 
 outfile = os.path.join(dirp, out)
@@ -189,13 +157,9 @@ for filename in os.listdir(dirp):
                         weather, playedweather = get_weather(line)
 
                 elif '|-sidestart|' in line:
-                    if has_hazard:
-                        multi_hazard, who_played_hazard = get_hazard(line)
-                        if not multi_hazard == hazard and not who_played_hazard == playedhazard:
-                            multi_hazards = True
-                    elif not has_hazard:
+                    if not has_hazard:
                         has_hazard = True
-                    hazard, playedhazard = get_hazard(line)
+                        hazard, playedhazard = get_hazard(line)
 
                 elif '|-fieldstart|' in line:
                     if not has_terrain:
