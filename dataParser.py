@@ -103,14 +103,9 @@ test = False
 """ set folder path and output file path, 
     then open the output file for writing """
 dirp = "G:/Shared drives/final learning machine/logs/"
-
-
 if test: out = "astringtest.txt"
 else: out = "aout.txt"
-
-
-outfile = os.path.join(dirp, out)
-outputfile = open(outfile, "w")
+outputfile = open(os.path.join(dirp, out), "w")
 
 
 """ write the headers to the output file """
