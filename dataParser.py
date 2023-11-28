@@ -103,10 +103,8 @@ test = True
 """ set folder path and output file path, 
     then open the output file for writing """
 dirp = "G:/Shared drives/final learning machine/logs/"
-
-
 if test: out = "astringtest.txt"
-else:    out = "aout.txt"
+else: out = "aout.txt"
 
 
 outfile = os.path.join(dirp, out)
