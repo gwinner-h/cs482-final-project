@@ -1,11 +1,11 @@
 import threading
 import queue
 from pathlib import Path
-import time
-import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+import requests
+import time
 
 
 def get_links():

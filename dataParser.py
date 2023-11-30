@@ -7,7 +7,8 @@
             terrain, and hazards that are present.
 
 i think this is entirely just a nasty hackjob
-200 lines if nested if statements and for loops """
+200 lines if nested if statements and for loops 
+"""
 import os
 import datetime
 
@@ -97,7 +98,7 @@ def who_played(player):
 """ set test to true to print strings with useful information
 where applicable to be certain this works correctly
 the joke is no, of course it doesn't. anyway... """
-test = True
+test = False
 
 
 """ set folder path and output file path, 
@@ -124,7 +125,7 @@ for filename in os.listdir(dirp):
     if filename.endswith(".txt") or filename.endswith(".log") and not filename.startswith("a"):
         file_path = os.path.join(dirp, filename)
 
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding = 'utf8') as file:
             """ set all the variables to false or none 
             i'm getting duplicate data so this is another hacky fix """
             has_weather   = False
