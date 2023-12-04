@@ -12,48 +12,73 @@ i think this is entirely just a nasty hackjob
 import os
 import datetime
 
+
+""" set test to true to print strings with useful information
+where applicable to be certain this works correctly
+the joke is no, of course it doesn't. anyway... """
+stringTest = False
+logTest    = True
+
+""" set folder path """
+# if stringTest: dirp = "G:/Shared drives/final learning machine/testOutput/"
+if logTest: dirp = "G:/Shared drives/final learning machine/testOutput/"
+else:       dirp = "G:/Shared drives/final learning machine/logs/"
+
+""" set the output file name """
+if stringTest: out = "astringtest.txt"
+elif logTest:  out = "alogtest.txt"
+else:          out = "aout.txt"
+
+""" concatenate the output file path & open the file for writing """
+outfile    = os.path.join(dirp, out)
+
+
 """ an obnoxiously long list of variables
 that i used to have in an always-evaluates-to-true 
 if stmnt for folding purposes. i miss it. """
-outcome     = "outcome"         
-snow        = "Snow"            #   
-rain        = "RainDance"       #
-sunny       = "SunnyDay"        #
-sand        = "Sandstorm"     
-grass       = "Grassy Terrain"  # 
-mist        = "Misty Terrain"   
+outcome     = "outcome"
+snow        = "Snow"
+rain        = "RainDance"
+sunny       = "SunnyDay"
+sand        = "Sandstorm"
+grass       = "Grassy Terrain"
+mist        = "Misty Terrain"
 electric    = "Electric Terrain"
-psychic     = "Psychic Terrain" 
-stealthrock = "Stealth Rock"    #
-spikes      = "Spikes"          #
-toxicspikes = "Toxic Spikes"    #
-stickyweb   = "Sticky Web"      
-reflect     = "Reflect"         
-lightscreen = "Light Screen"    
-aurora      = "Aurora Veil"    
+psychic     = "Psychic Terrain"
+trickroom   = "Trick Room"
+stealthrock = "Stealth Rock"
+spikes      = "Spikes"
+toxicspikes = "Toxic Spikes"
+stickyweb   = "Sticky Web"
+reflect     = "Reflect"
+lightscreen = "Light Screen"
+aurora      = "Aurora Veil"
+tailwind    = "Tailwind"
 headers = {
     'outcome':outcome,
-    'snow':snow, 
-    'rain':rain, 
-    'sunny':sunny, 
-    'sand':sand, 
-    'grass':grass, 
-    'mist':mist, 
-    'electric':electric, 
-    'psychic':psychic,    
-    'stealthrock':stealthrock, 
-    'spikes':spikes, 
-    'toxicspikes':toxicspikes, 
-    'stickyweb':stickyweb, 
-    'reflect':reflect, 
-    'lightscreen':lightscreen, 
-    'aurora':aurora
+    'snow':snow,
+    'rain':rain,
+    'sunny':sunny,
+    'sand':sand,
+    'grass':grass,
+    'mist':mist,
+    'electric':electric,
+    'psychic':psychic,
+    'trickroom':trickroom,
+    'stealthrock':stealthrock,
+    'spikes':spikes,
+    'toxicspikes':toxicspikes,
+    'stickyweb':stickyweb,
+    'reflect':reflect,
+    'lightscreen':lightscreen,
+    'aurora':aurora,
+    'tailwind':tailwind
 }
 classlabels = {
     "weather": [snow, rain, sunny, sand],
-    "terrain": [grass, mist, electric, psychic],
-    "hazards": [stealthrock, spikes, toxicspikes, 
-                stickyweb, reflect, lightscreen, aurora]
+    "terrain": [grass, mist, electric, psychic, trickroom],
+    "hazards": [stealthrock, spikes, toxicspikes, stickyweb,
+                reflect, lightscreen, aurora, tailwind]
 }
 
 """ player 1 and player 2 """
@@ -95,28 +120,16 @@ def who_played(player):
     return None
 
 
-""" set test to true to print strings with useful information
-where applicable to be certain this works correctly
-the joke is no, of course it doesn't. anyway... """
-test = False
 
 
-""" set folder path and output file path, 
-    then open the output file for writing """
-dirp = "G:/Shared drives/final learning machine/logs/"
-if test: out = "astringtest.txt"
-else: out = "aout.txt"
-
-
-outfile = os.path.join(dirp, out)
 outputfile = open(outfile, "w")
 
-
 """ write the headers to the output file """
-if test: outputfile.write(str(datetime.datetime.now()) + '  ||  total files (' + str(len(os.listdir(dirp))) + ') in <<' + dirp + '>>' + '\n')
+if stringTest: 
+    outputfile.write(str(datetime.datetime.now()) + '  ||  total files (' + str(len(os.listdir(dirp))) + ') in <<' + dirp + '>>' + '\n\n')
 for key, value in headers.items():
     outputfile.write(f"{key},")
-outputfile.write("\n")
+outputfile.write('\n')
 
 
 for filename in os.listdir(dirp):
@@ -153,17 +166,20 @@ for filename in os.listdir(dirp):
                 elif '|-weather|' in line:
                     if not has_weather:
                         has_weather = True
-                        weather, playedweather = get_weather(line)
+                    # weather, playedweather = get_weather(line)
+                    print(get_weather(line))
 
                 elif '|-sidestart|' in line:
                     if not has_hazard:
                         has_hazard = True
-                        hazard, playedhazard = get_hazard(line)
+                    # hazard, playedhazard = get_hazard(line)
+                    print(get_hazard(line))
 
                 elif '|-fieldstart|' in line:
                     if not has_terrain:
                         has_terrain = True
-                        terrain, playedterrain = get_terrain(line)
+                    # terrain, playedterrain = get_terrain(line)
+                    print(get_terrain(line))
 
                 elif '|win|' in line:
                     if not is_game_over:
@@ -184,73 +200,64 @@ for filename in os.listdir(dirp):
                         if has_weather:
                             for label in classlabels["weather"]:
                                 if label == weather:
-                                    if test: data.append(f"{weather}<{playedweather}>")
-                                    else: data.append(playedweather)
-                                else: data.append("0")
+                                    if stringTest: 
+                                        data.append(f'{weather}<{playedweather}>')
+                                    else: 
+                                        data.append(playedweather)
+                                else: data.append('0')
                         else: 
-                            if test: data.append(",,|NO WEATHER|,,")
+                            if stringTest: 
+                                data.append('|x,NO WEATHER,x|')
                             else:
-                                for i in range(len(classlabels["weather"])): data.append("0")
+                                for i in range(len(classlabels['weather'])): 
+                                    data.append("0")
 
 
                         if has_terrain:
                             for label in classlabels['terrain']:
                                 if label == terrain:
-                                    if test: data.append(f"{terrain}<{playedterrain}>")
-                                    else: data.append(playedterrain)
-                                else: data.append("0")
+                                    if stringTest: 
+                                        data.append(f"{terrain}<{playedterrain}>")
+                                    else: 
+                                        data.append(playedterrain)
+                                else: 
+                                    data.append('0')
                         else: 
-                            if test: data.append(",,|NO TERRAIN|,,")
+                            if stringTest: 
+                                data.append('|x,NO TERRAIN,x,x|')
                             else: 
-                                for i in range(len(classlabels['terrain'])): data.append("0")
+                                for i in range(len(classlabels['terrain'])): 
+                                    data.append('0')
 
 
                         if has_hazard:
                             for label in classlabels["hazards"]:
                                 if label == hazard:
-                                    if test: data.append(f"{hazard}<{playedhazard}>")
-                                    else: data.append(playedhazard)
-                                else: data.append("0")
+                                    if stringTest: 
+                                        data.append(f'{hazard}<{playedhazard}>')
+                                    else: 
+                                        data.append(playedhazard)
+                                else: 
+                                    data.append('0')
                         else:
-                            if test: data.append(",,,|NO HAZARDS|,,,,")
+                            if stringTest: 
+                                data.append('|x,x,NO HAZARDS,x,x,x,x|')
                             else:
-                                for i in range(len(classlabels["hazards"])): data.append("0")
+                                for i in range(len(classlabels["hazards"])): 
+                                    data.append('0')
 
                         # print(data)
                         for item in data:
                             outputfile.write(f'{item},')
-                        if test: outputfile.write(f'    >>>>  {p1a} v {p2a}')
-                        outputfile.write("\n")
+                            print(item, end = ',')
+                        if stringTest: 
+                            outputfile.write(f'    >>>>  {p1a} v {p2a}')
+                            print(f'    >>>> []  {p1a} v {p2a} ]')
+                        outputfile.write('\n')
+                        print('\n')
                     
                     else:
-                        if test: outputfile.write("__NO_FUTURE__no useful data in this file ~smile~\n")
-                
-                    
+                        if stringTest: outputfile.write("__NO_FUTURE__no useful data in this file ~smile~\n")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-outputfile.write("\n\n\n>>>> let em kno that highd was here >>>>")
+                    break
 outputfile.close()
