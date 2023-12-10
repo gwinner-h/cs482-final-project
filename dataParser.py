@@ -13,30 +13,13 @@ import os
 import datetime
 
 
-""" set test to true to print strings with useful information
-where applicable to be certain this works correctly
-the joke is no, of course it doesn't. anyway... """
-stringTest = False
-logTest    = True
-
-""" set folder path """
-# if stringTest: dirp = "G:/Shared drives/final learning machine/testOutput/"
-if logTest: dirp = "G:/Shared drives/final learning machine/testOutput/"
-else:       dirp = "G:/Shared drives/final learning machine/logs/"
-
-""" set the output file name """
-if stringTest: out = "astringtest.txt"
-elif logTest:  out = "alogtest.txt"
-else:          out = "aout.txt"
-
-""" concatenate the output file path & open the file for writing """
-outfile    = os.path.join(dirp, out)
+# set folder path, output file name, and concatenate the output file path
+dirp = "G:/Shared drives/final learning machine/logs/"
+out = "aout.txt"
+outfile = os.path.join(dirp, out)
 
 
-""" an obnoxiously long list of variables
-that i used to have in an always-evaluates-to-true 
-if stmnt for folding purposes. i miss it. """
-outcome     = "outcome"
+# global variables
 snow        = "Snow"
 rain        = "RainDance"
 sunny       = "SunnyDay"
@@ -54,210 +37,411 @@ reflect     = "Reflect"
 lightscreen = "Light Screen"
 aurora      = "Aurora Veil"
 tailwind    = "Tailwind"
+outcome     = "outcome"
 headers = {
-    'outcome':outcome,
-    'snow':snow,
-    'rain':rain,
-    'sunny':sunny,
-    'sand':sand,
-    'grass':grass,
-    'mist':mist,
-    'electric':electric,
-    'psychic':psychic,
-    'trickroom':trickroom,
-    'stealthrock':stealthrock,
-    'spikes':spikes,
-    'toxicspikes':toxicspikes,
-    'stickyweb':stickyweb,
-    'reflect':reflect,
-    'lightscreen':lightscreen,
-    'aurora':aurora,
-    'tailwind':tailwind
+    'snow1':snow,
+    'snow2':snow,
+    'rain1':rain,
+    'rain2':rain,
+    'sunny1':sunny,
+    'sunny2':sunny,
+    'sand1':sand,
+    'sand2':sand,
+    'grass1':grass,
+    'grass2':grass,
+    'mist1':mist,
+    'mist2':mist,
+    'electric1':electric,
+    'electric2':electric,
+    'psychic1':psychic,
+    'psychic2':psychic,
+    'trickroom1':trickroom,
+    'trickroom2':trickroom,
+    'stealthrock1':stealthrock,
+    'stealthrock2':stealthrock,
+    'spikes1':spikes,
+    'spikes2':spikes,
+    'toxicspikes1':toxicspikes,
+    'toxicspikes2':toxicspikes,
+    'stickyweb1':stickyweb,
+    'stickyweb2':stickyweb,
+    'reflect1':reflect,
+    'reflect2':reflect,
+    'lightscreen1':lightscreen,
+    'lightscreen2':lightscreen,
+    'aurora1':aurora,
+    'aurora2':aurora,
+    'tailwind1':tailwind,
+    'tailwind2':tailwind,
+    'outcome':outcome
 }
 classlabels = {
     "weather": [snow, rain, sunny, sand],
     "terrain": [grass, mist, electric, psychic, trickroom],
-    "hazards": [stealthrock, spikes, toxicspikes, stickyweb,
-                reflect, lightscreen, aurora, tailwind]
+    "hazards": [stealthrock, spikes, toxicspikes, stickyweb],
+    "screens": [reflect, lightscreen, aurora, tailwind],
 }
 
-""" player 1 and player 2 """
-p1 = 1
-p2 = 2
+# this sets the player names to None
+p1_name = None
+p2_name = None
+is_game_over  = False
 
-""" a bunch of functions that could have been coded a hell of a lot better """
-def get_player(line): return line.split("|")[3]
+has_weather    = False
+p1_has_weather = False
+p2_has_weather = False
+weather        = None
+playedweather  = None
 
+has_terrain    = False
+p1_has_terrain = False
+p2_has_terrain = False
+terrain        = None
+playedterrain  = None
+
+has_hazard    = False
+p1_has_hazard = False
+p2_has_hazard = False
+hazard        = None
+playedhazard  = None
+
+has_screen    = False
+p1_has_screen = False
+p2_has_screen = False
+screen        = None
+playedscreen  = None
+
+spike1_counter = 0
+toxic1_counter = 0
+spike2_counter = 0
+toxic2_counter = 0
+
+# player 1 and player 2 return values
+player1 = 1
+p1 = 'p1'
+p1a = 'p1a'
+player2 = 2
+p2 = 'p2'
+p2a = 'p2a'
+
+# literal strings for checking line
+p1_line = '|player|p1|'
+p2_line = '|player|p2|'
+weather_line = '|-weather|'
+terrain_line = '|-fieldstart|'
+hazard_line = '|-sidestart|'
+win_line = '|win|'
+
+
+""" function definitions """
+# writes headers
+def print_headers():
+    if stringTest: 
+        outputfile.write(str(datetime.datetime.now()) + '  ||  total files (' + 
+                         str(len(os.listdir(dirp))) + ') in <<' + dirp + '>>' + '\n\n')
+    
+    for key, value in headers.items():
+        outputfile.write(f"{key},")
+    outputfile.write('\n')
+
+# resets all the variables to false or none
+def reset_vars():
+    global is_game_over, p1_name, p2_name
+    global has_weather, weather, playedweather
+    global p1_has_weather, p2_has_weather
+    global has_terrain, terrain, playedterrain
+    global p1_has_terrain, p2_has_terrain
+    global has_hazard, hazard, playedhazard
+    global p1_has_hazard, p2_has_hazard
+    global has_screen, screen, playedscreen
+    global p1_has_screen, p2_has_screen
+    global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
+
+    is_game_over  = False
+    p1_name = None   # holds player1 username
+    p2_name = None   # holds player2 username
+
+    has_weather   = False
+    p1_has_weather = False
+    p2_has_weather = False
+    weather       = None
+    playedweather = None
+
+    has_terrain   = False
+    p1_has_terrain = False
+    p2_has_terrain = False
+    terrain       = None
+    playedterrain = None
+
+    has_hazard    = False
+    p1_has_hazard = False
+    p2_has_hazard = False
+    hazard        = None
+    playedhazard  = None
+
+    spike1_counter = 0
+    toxic1_counter = 0
+    spike2_counter = 0
+    toxic2_counter = 0
+
+    has_screen   = False
+    p1_has_screen = False
+    p2_has_screen = False
+    screen       = None
+    playedscreen = None
+
+    return None
+
+# function that returns the player name
+def set_player(line): 
+    return line.split("|")[3]
+
+# returns the player that played the move
+def who_played(player):
+    if player == p1_name or player == p1a:
+        return player1  # returns 1
+    elif player == p2_name or player == p2a:
+        return player2  # returns 2
+    return None
+
+# returns the weather and the player that played it
 def get_weather(line):
+    global has_weather, p1_has_weather, p2_has_weather
+
     for weather in classlabels["weather"]:
         if weather in line:
-            if p1a in line:   return weather, p1
-            elif p2a in line: return weather, p2
+            has_weather = True
+
+            if p1a in line:
+                p1_has_weather = True
+                return weather, player1
+            elif p2a in line:
+                p2_has_weather = True
+                return weather, player2
+            
     return None, None
 
+# returns the terrain and the player that played it
 def get_terrain(line):
+    global has_terrain, p1_has_terrain, p2_has_terrain
+
     for terrain in classlabels["terrain"]:
         if terrain in line:
-            if p1a in line:   return terrain, p1
-            elif p2a in line: return terrain, p2
+            has_terrain = True
+
+            if p1a in line:
+                p1_has_terrain = True
+                return terrain, player2
+            elif p2a in line:
+                p2_has_terrain = True
+                return terrain, player1
+            
     return None, None
 
+# returns the hazard and the player that played it, hazards and screens are in the same |- line, so must check for both
 def get_hazard(line):
-    for hazard in classlabels["hazards"]:
+    """ for hazard in classlabels['hazards']:
+            # if p1_name in line:   
+            #     return hazard, player2
+            # elif p2_name in line: 
+            #     return hazard, player1 """
+    global has_hazard, p1_has_hazard, p2_has_hazard
+
+    for hazard in (classlabels["hazards"]) or screen in classlabels["screens"]:
+        # p1a uses hazard (prev line: |move|p1a:), but p2 is affected by it (|-sidestart|p1: )
         if hazard in line:
-            if p1a in line:   return hazard, p1
-            elif p2a in line: return hazard, p2
+            has_hazard = True
+
+            # if p1 is in sidestart line, then p2 played the hazard
+            if hazard == spikes or hazard == toxicspikes:
+                if p1_name in line:
+                    match(hazard, player2)  # update the counter for player2
+                if p2_name in line:
+                    match(hazard, player1)  # update the counter for player1
+
+            # not spikes or toxicspikes
+            if p2_name in line:
+                p1_has_hazard = True
+                return hazard, player1
+            elif p1_name in line:
+                p2_has_hazard = True
+                return hazard, player2
+            
+        elif screen in line:
+            return get_screens(line)
     return None, None
 
+# updates the appropriate counter for the hazard
+def match(hazard, player):
+    global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
+
+    if hazard == spikes and player == player1:
+        spike1_counter += 1
+    elif hazard == toxicspikes and player == player1:
+        toxic1_counter += 1
+    elif hazard == spikes and player == player2:
+        spike2_counter += 1
+    elif hazard == toxicspikes and player == player2:
+        toxic2_counter += 1
+
+    """ if hazard == spikes: 
+    #     spike_counter += 1
+    # elif hazard == toxicspikes: 
+    #     toxic_counter += 1 """
+    return None
+
+# returns the screen and the player that played it
+def get_screens(line):
+    global has_screen, p1_has_screen, p2_has_screen
+
+    # p1a uses screen (prev line: |move|p1a:) and is affected by it (|-sidestart|p1: )
+    for screen in classlabels["screens"]:
+        if screen in line:
+            has_screen = True
+
+            if p1_name in line:
+                p1_has_screen = True
+                return screen, player1
+            elif p2_name in line:
+                p2_has_screen = True
+                return screen, player2
+    return None, None
+
+# returns the outcome/winner of the battle
 def get_outcome(line, p1a, p2a):
-    if p1a in line:   return p1   # 1
-    elif p2a in line: return p2   # 2
-    return None
-
-def who_played(player):
-    if player == p1a:   return p1
-    elif player == p2a: return p2
+    if p1a in line:   
+        return '0'  # 1
+    elif p2a in line: 
+        return '1'  # 2
     return None
 
 
-
-
+""" main """
+# open the output file & write the headers to the file
 outputfile = open(outfile, "w")
+print_headers()
 
-""" write the headers to the output file """
-if stringTest: 
-    outputfile.write(str(datetime.datetime.now()) + '  ||  total files (' + str(len(os.listdir(dirp))) + ') in <<' + dirp + '>>' + '\n\n')
-for key, value in headers.items():
-    outputfile.write(f"{key},")
-outputfile.write('\n')
-
-
+# traverse the folder that contains the logs
 for filename in os.listdir(dirp):
-    """ ignore any "a----" files, 
-        they're generated by lil ol me """
+
+    # ignores any "a----" files, they're generated by lil ol me
     if filename.endswith(".txt") or filename.endswith(".log") and not filename.startswith("a"):
+        
+        # set the file path
         file_path = os.path.join(dirp, filename)
 
+        # open the file
         with open(file_path, 'r', encoding = 'utf8') as file:
-            """ set all the variables to false or none 
-            i'm getting duplicate data so this is another hacky fix """
-            has_weather   = False
-            weather       = None
-            playedweather = None
 
-            has_terrain   = False
-            terrain       = None
-            playedterrain = None
-
-            has_hazard    = False
-            hazard        = None
-            playedhazard  = None
-
-            is_game_over  = False
-            p1a = None
-            p2a = None
+            # set all the variables to false or none
+            reset_vars()
             
+            # iterate over each line in the file
             for line in file:
-                if '|player|p1|' in line:
-                    p1a = get_player(line)
-                elif '|player|p2|' in line:
-                    p2a = get_player(line)
 
-                elif '|-weather|' in line:
-                    if not has_weather:
-                        has_weather = True
-                    # weather, playedweather = get_weather(line)
-                    print(get_weather(line))
+                # set the player names
+                if p1_line in line:
+                    p1_name = set_player(line)
+                elif p2_line in line:
+                    p2_name = set_player(line)
 
-                elif '|-sidestart|' in line:
-                    if not has_hazard:
-                        has_hazard = True
-                    # hazard, playedhazard = get_hazard(line)
-                    print(get_hazard(line))
+                elif weather_line in line:
+                    weather, playedweather = get_weather(line)
 
-                elif '|-fieldstart|' in line:
-                    if not has_terrain:
-                        has_terrain = True
-                    # terrain, playedterrain = get_terrain(line)
-                    print(get_terrain(line))
+                # hazards and screens show up in the same line
+                elif hazard_line in line:
+                    hazard, playedhazard = get_hazard(line)
 
-                elif '|win|' in line:
+                elif terrain_line in line:
+                    terrain, playedterrain = get_terrain(line)
+
+                elif win_line in line:
                     if not is_game_over:
                         is_game_over = True
-                        outcome = get_outcome(line, p1a, p2a)
+                        outcome = get_outcome(line, p1_name, p2_name)
 
-                """ k we are done with the file, 
-                    now let's write to the output file
-                    but respect the order of the headers 
-                    this is where it gets really ugly """
+                """ TODO: FIX ALL OF THE OUTPUT! DOES NOT EVALUATE CORRECTLY WHO PLAYED WHAT FOR ALL EFFECTS """
+                # we are done with the file, now let's write to the output file but respect the order of the headers 
                 if is_game_over:
-                    """ if theres no useful data, dont bother writing """
-                    if has_weather or has_terrain or has_hazard:
-                        
-                        data = []
-                        data.append(outcome)
 
-                        if has_weather:
-                            for label in classlabels["weather"]:
-                                if label == weather:
-                                    if stringTest: 
-                                        data.append(f'{weather}<{playedweather}>')
-                                    else: 
-                                        data.append(playedweather)
-                                else: data.append('0')
-                        else: 
-                            if stringTest: 
-                                data.append('|x,NO WEATHER,x|')
-                            else:
-                                for i in range(len(classlabels['weather'])): 
-                                    data.append("0")
+                    # holds the data that will be written to the output file
+                    data = []
 
-
-                        if has_terrain:
-                            for label in classlabels['terrain']:
-                                if label == terrain:
-                                    if stringTest: 
-                                        data.append(f"{terrain}<{playedterrain}>")
-                                    else: 
-                                        data.append(playedterrain)
-                                else: 
-                                    data.append('0')
-                        else: 
-                            if stringTest: 
-                                data.append('|x,NO TERRAIN,x,x|')
+                    # TODO: fix evaluating who played weather
+                    if has_weather:
+                        for label in classlabels["weather"]:
+                            if label == weather:
+                                data.append(playedweather)
                             else: 
-                                for i in range(len(classlabels['terrain'])): 
-                                    data.append('0')
+                                data.append('0')
+                    else: 
+                        for i in range(len(classlabels['weather'])): 
+                            data.append("0")
 
-
-                        if has_hazard:
-                            for label in classlabels["hazards"]:
-                                if label == hazard:
-                                    if stringTest: 
-                                        data.append(f'{hazard}<{playedhazard}>')
-                                    else: 
-                                        data.append(playedhazard)
-                                else: 
-                                    data.append('0')
-                        else:
-                            if stringTest: 
-                                data.append('|x,x,NO HAZARDS,x,x,x,x|')
-                            else:
-                                for i in range(len(classlabels["hazards"])): 
-                                    data.append('0')
-
-                        # print(data)
-                        for item in data:
-                            outputfile.write(f'{item},')
-                            print(item, end = ',')
+                    # TODO: fix evaluating who played terrain
+                    if has_terrain:
+                        for label in classlabels['terrain']:
+                            if label == terrain:
+                                data.append(playedterrain)
+                            else: 
+                                data.append('0')
+                    else: 
                         if stringTest: 
-                            outputfile.write(f'    >>>>  {p1a} v {p2a}')
-                            print(f'    >>>> []  {p1a} v {p2a} ]')
-                        outputfile.write('\n')
-                        print('\n')
+                            data.append('|x,x,x,x,x|')
+                        else: 
+                            for i in range(len(classlabels['terrain'])): 
+                                data.append('0')
+
+
+                    # TODO: fix evaluating who played hazard and what hazard was played
+                    if has_hazard:
+                        for label in classlabels["hazards"]:
+                            if label == hazard:
+                                if playedhazard == p1_name:
+                                    if hazard == spikes:
+                                        data.append(spike1_counter)
+                                        data.append('0')
+                                    elif hazard == toxicspikes:
+                                        data.append(toxic1_counter)
+                                        data.append('0')
+                                    else:
+                                        data.append(playedhazard)
+                                        data.append('0')
+                                elif playedhazard == p2_name:
+                                    if hazard == spikes:
+                                        data.append('0')
+                                        data.append(spike2_counter)
+                                    elif hazard == toxicspikes:
+                                        data.append('0')
+                                        data.append(toxic2_counter)
+                                    else:
+                                        data.append('0')
+                                        data.append(playedhazard)
+                            else:
+                                data.append('0')
+                        else: # THIS PART DOES NOT WORK SINCE THERE ARE NOW TWO COLUMNS FOR EVERY HAZARD
+                            for i in range(len(classlabels["hazards"])): 
+                                data.append('0')
                     
+
+                    # TODO: fix evaluating who played screen
+                    if has_screen:
+                        for label in classlabels["screens"]:
+                            if label == screen:
+                                data.append(playedscreen)
+                            else: 
+                                data.append('0')
                     else:
-                        if stringTest: outputfile.write("__NO_FUTURE__no useful data in this file ~smile~\n")
+                        for i in range(len(classlabels["screens"])): 
+                            data.append('0')
+                    
+                    # print who won, 0 = player1, 1 = player2
+                    data.append(outcome)
+
+                    # write the data to the output file
+                    for item in data:
+                        outputfile.write(f'{item},')
+                    outputfile.write('\n')
 
                     break
 outputfile.close()
