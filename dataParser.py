@@ -182,53 +182,37 @@ def print_headers():
 
 # resets all the variables to false or none
 def reset_vars():
-    global is_game_over, p1_name, p2_name
-    global has_weather, weather, played_weather
-    global has_terrain, terrain, played_terrain
-    global has_hazard, player_hazard, played_hazard
-    global has_screen, screen, played_screen
-    global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
-    global player1_spikes, player2_spikes, player1_toxicspikes, player2_toxicspikes
-
-    is_game_over  = False
-    p1_name = None   # holds player1 username
-    p2_name = None   # holds player2 username
-
-    has_weather    = False
-    weather        = None
-    played_weather = None
-
-    has_terrain    = False
-    terrain        = None
-    played_terrain = None
-
-    has_hazard    = False
-    player_hazard = None
-    played_hazard = None
-
-    has_screen    = False
-    screen        = None
-    played_screen = None
-
-    spike1_counter = 0
-    toxic1_counter = 0
-    spike2_counter = 0
-    toxic2_counter = 0
-
-    player1_spikes = False
-    player2_spikes = False
-    player1_toxicspikes = False
-    player2_toxicspikes = False
-
-    return None
+    return {
+        'is_game_over': False,
+        'p1_name': None,
+        'p2_name': None,
+        'has_weather': False,
+        'weather': None,
+        'played_weather': None,
+        'has_terrain': False,
+        'terrain': None,
+        'played_terrain': None,
+        'has_hazard': False,
+        'player_hazard': None,
+        'played_hazard': None,
+        'has_screen': False,
+        'screen': None,
+        'played_screen': None,
+        'spike1_counter': 0,
+        'toxic1_counter': 0,
+        'spike2_counter': 0,
+        'toxic2_counter': 0,
+        'player1_spikes': False,
+        'player2_spikes': False,
+        'player1_toxicspikes': False,
+        'player2_toxicspikes': False,
+        'p1_moves': [],
+        'p2_moves': [],
+    }
 
 # clears the arrays
 def clear_arrays():
-    global p1_moves, p2_moves
-
-    p1_moves.clear()
-    p2_moves.clear()
-    return None
+    return {'p1_moves': [], 'p2_moves': []}
 
 # function that returns the player name
 def set_player(line): 
@@ -397,110 +381,6 @@ def get_outcome(line, p1a, p2a):
         return '1'  # 2
     return None
 
-# test output
-def print_test():
-    global p1_moves, p2_moves
-    global has_weather, has_terrain, has_hazard, has_screen
-
-    test = []
-
-    if has_weather:
-        # get the weather in order of headers
-        for weather in classlabels['weather']:
-
-            # check if player1 played weather
-            for player1_weather in p1_moves:
-                if weather == player1_weather:
-                    test.append(player1_weather)
-                else: 
-                    test.append('0')
-            # check if player2 played the same weather
-            for player2_weather in p2_moves:
-                if weather == player2_weather:
-                    test.append(player2_weather)
-                else: 
-                    test.append('0')
-    else: 
-        for i in range(len(playerlabels['player_weather'])): 
-            test.append("0")
-
-    """ if a terrain was played at all this game, otherwise append 0's """
-    if has_terrain:
-        for terrain in classlabels['terrain']:
-            # check if player1 played terrain
-            for player1_terrain in p1_moves:
-                if terrain == player1_terrain:
-                    test.append(player1_terrain)
-                else:
-                    test.append('0')
-
-            # check if player2 played the same terrain
-            for player2_terrain in p2_moves:
-                if terrain == player2_terrain:
-                    test.append(player2_terrain)
-                else: 
-                    test.append('0')
-    else:   # no terrain was played
-        for i in range(len(playerlabels['player_terrain'])): 
-            test.append('0')
-
-
-    """ if a hazard was played at all this game, otherwise, append 0's """
-    if has_hazard:
-        # get the hazard in the order of the headers
-        for hazard in classlabels["hazards"]:
-
-            # iterate over p1's moves to check if they played the same hazard
-            for player1_hazard in p1_moves:
-                if hazard == player1_hazard:
-                    # output the counter for the hazard if it is spikes or toxicspikes
-                    if player1_hazard == spikes:
-                        test.append(spike1_counter)
-                    elif player1_hazard == toxicspikes:
-                        test.append(toxic1_counter)
-                    else: # otherwise, just append 1
-                        test.append(player1_hazard)
-                # player1 did not play this hazard
-                else:
-                    test.append('0')
-
-            # iterate over p2's hazards array to check if they played the same hazard
-            for player2_hazard in p2_moves:
-                if hazard == player2_hazard:
-                    if player2_hazard == spikes:
-                        test.append(spike2_counter)
-                    elif player2_hazard == toxicspikes:
-                        test.append(toxic2_counter)
-                    else:
-                        test.append(player2_hazard)
-                # player2 did not play this hazard
-                else:
-                    test.append('0')
-    else:   # no hazards were played
-        for i in range(len(playerlabels["player_hazards"])):
-            test.append('0')
-    
-    """ if a screen was played at all this game, otherwise, append 0's """
-    if has_screen:
-        for screen in classlabels["screens"]:
-            # check if player 1 played the screen
-            for player1_screen in p1_moves:
-                if screen == player1_screen:
-                    test.append(player1_screen)
-                else: 
-                    test.append('0')
-            # check if player2 played the same screen
-            for player2_screen in p2_moves:
-                if screen == player2_screen:
-                    test.append(player2_screen)
-                else: 
-                    test.append('0')
-    else:
-        for i in range(len(playerlabels["player_screens"])): 
-            test.append('0')
-    
-    return test
-
 # sets the output to be printed to the output file
 def set_output():
     global p1_moves, p2_moves
@@ -509,105 +389,30 @@ def set_output():
     # holds the data that will be written to the output file
     data = []
 
-    """ if a weather was played at all this game, otherwise append 0's """
-    if has_weather:
-        # get the weather in order of headers
-        for weather in classlabels['weather']:
-
-            # check if player1 played weather
-            for player1_weather in p1_moves:
-                if weather == player1_weather:
-                    data.append(play)
-                else: 
-                    data.append('0')
-            # check if player2 played the same weather
-            for player2_weather in p2_moves:
-                if weather == player2_weather:
-                    data.append(play)
-                else: 
-                    data.append('0')
-    else: 
-        for i in range(len(playerlabels['player_weather'])): 
-            data.append("0")
-
-    """ if a terrain was played at all this game, otherwise append 0's """
-    if has_terrain:
-        for terrain in classlabels['terrain']:
-            # check if player1 played terrain
-            for player1_terrain in p1_moves:
-                if terrain == player1_terrain:
-                    data.append(play)
-                    print(player1_terrain)
+    # iterate over player labels, check if each condition was played byt he players
+    for label in classlabels.keys():
+        for condition in classlabels[label]:
+            if condition in p1_moves:
+                if condition == spikes:
+                    data.append(spike1_counter)
+                elif condition == toxicspikes:
+                    data.append(toxic1_counter)
                 else:
-                    data.append('0')
-
-            # check if player2 played the same terrain
-            for player2_terrain in p2_moves:
-                if terrain == player2_terrain:
-                    data.append(play)
-                    print(player2_terrain)
-                else: 
-                    data.append('0')
-    else:   # no terrain was played
-        for i in range(len(playerlabels['player_terrain'])): 
-            data.append('0')
-
-
-    """ if a hazard was played at all this game, otherwise, append 0's """
-    if has_hazard:
-        # get the hazard in the order of the headers
-        for hazard in classlabels["hazards"]:
-
-            # iterate over p1's moves to check if they played the same hazard
-            for player1_hazard in p1_moves:
-                if hazard == player1_hazard:
-                    # output the counter for the hazard if it is spikes or toxicspikes
-                    if player1_hazard == spikes:
-                        data.append(spike1_counter)
-                    elif player1_hazard == toxicspikes:
-                        data.append(toxic1_counter)
-                    else: # otherwise, just append 1
-                        data.append(play)
-                # player1 did not play this hazard
+                    data.append('1')
+            else:
+                data.append('0')
+            
+            if condition in p2_moves:
+                if condition == spikes:
+                    data.append(spike1_counter)
+                elif condition == toxicspikes:
+                    data.append(toxic1_counter)
                 else:
-                    data.append('0')
-
-            # iterate over p2's hazards array to check if they played the same hazard
-            for player2_hazard in p2_moves:
-                if hazard == player2_hazard:
-                    if player2_hazard == spikes:
-                        data.append(spike2_counter)
-                    elif player2_hazard == toxicspikes:
-                        data.append(toxic2_counter)
-                    else:
-                        data.append(play)
-                # player2 did not play this hazard
-                else:
-                    data.append('0')
-    else:   # no hazards were played
-        for i in range(len(playerlabels["player_hazards"])):
-            data.append('0')
-    
-    """ if a screen was played at all this game, otherwise, append 0's """
-    if has_screen:
-        for screen in classlabels["screens"]:
-            # check if player 1 played the screen
-            for player1_screen in p1_moves:
-                if screen == player1_screen:
-                    data.append(play)
-                else: 
-                    data.append('0')
-            # check if player2 played the same screen
-            for player2_screen in p2_moves:
-                if screen == player2_screen:
-                    data.append(play)
-                else: 
-                    data.append('0')
-    else:
-        for i in range(len(playerlabels["player_screens"])): 
-            data.append('0')
-    
+                    data.append('1')
+            else:
+                data.append('0')
     return data
+
 
 # writes the data to the output file
 def print_data(data):
@@ -698,31 +503,13 @@ for filename in os.listdir(dirp):
                 if is_game_over:
 
                     # set the output to be printed to the output file
-                    # output = set_output()
+                    output = set_output()
 
                     # append the outcome to the data array
-                    # output.append(outcome)
+                    output.append(outcome)
 
                     # write the data to the output file
-                    # print_data(output)
-
-                    """ for testing """
-                    test_data = print_test()
-                    test_data.append(outcome)
-
-                    print(len(test_data))
-                    for item in test_data:
-                        print(item, end = ',')
-                    print('\n')
-
-                    # print('\n\n')
-                    # print(file_path)
-                    # print('player1 moves: ')
-                    # print(p1_moves)
-                    # print('\nplayer2 moves: ')
-                    # print(p2_moves)
-                    # print(len(output))
-                    # print(output)
+                    print_data(output)
 
                     break
 outputfile.close()
