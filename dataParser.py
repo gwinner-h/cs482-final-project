@@ -129,24 +129,7 @@ p1_moves = []
 p2_moves = []
 
 is_game_over  = False
-has_weather = False
-has_terrain = False
-has_hazard = False
-has_screen = False
 
-weather = None
-terrain = None
-hazard = None
-screen = None
-
-who_played_weather = None
-who_played_terrain = None
-who_played_hazard  = None
-
-player1_spikes = False
-player2_spikes = False
-player1_toxicspikes = False
-player2_toxicspikes = False
 spike1_counter = 0
 toxic1_counter = 0
 spike2_counter = 0
@@ -159,7 +142,6 @@ p1      = 'p1'
 p2      = 'p2'
 p1a     = 'p1a'
 p2a     = 'p2a'
-play = '1'
 
 # literal strings for checking line
 p1_line      = '|player|p1|'
@@ -180,40 +162,16 @@ def print_headers():
 
 # resets all the variables to false or none
 def reset_vars():
-    global p1_name, p2_name, is_game_over, has_weather, weather, played_weather
-    global has_terrain, terrain, played_terrain, has_hazard, player_hazard, played_hazard
-    global has_screen, screen, played_screen, spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
-    global player1_spikes, player2_spikes, player1_toxicspikes, player2_toxicspikes
+    global p1_name, p2_name, is_game_over
+    global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
 
     is_game_over  = False
     p1_name = None   # holds player1 username
     p2_name = None   # holds player2 username
-
-    has_weather    = False
-    weather        = None
-    played_weather = None
-
-    has_terrain    = False
-    terrain        = None
-    played_terrain = None
-
-    has_hazard    = False
-    player_hazard = None
-    played_hazard = None
-
-    has_screen    = False
-    screen        = None
-    played_screen = None
-
     spike1_counter = 0
     toxic1_counter = 0
     spike2_counter = 0
     toxic2_counter = 0
-
-    player1_spikes = False
-    player2_spikes = False
-    player1_toxicspikes = False
-    player2_toxicspikes = False
 
     return None
 
@@ -239,108 +197,69 @@ def get_player(player):
 
 # returns the weather and the player that played it
 def get_weather(line):
-    global has_weather, p1_weather, p2_weather
-
     for weather in classlabels["weather"]:
         if weather in line:
-            has_weather = True
-
             if p1a in line:
                 return weather, player1
             elif p2a in line:
                 return weather, player2
-            
     return None, None
 
 # returns the terrain and the player that played it
 def get_terrain(line):
-    global has_terrain, p1_terrain, p2_terrain
-
     for terrain in classlabels["terrain"]:
         if terrain in line:
-            has_terrain = True
-
             if p1a in line:
                 return terrain, player2
             elif p2a in line:
                 return terrain, player1
-            
     return None, None
 
 # returns the hazard and the player that played it, hazards and screens are in the same |- line, so must check for both
 def get_hazard(line):
-    global has_hazard
-
+    # check if the line contains a hazard
     for hazard in classlabels["hazards"]:
-        # p1a uses hazard, but p2 is affected (prev line: |move|p1a: || read line: |-sidestart|p1:)
         if hazard in line:
-            has_hazard = True
-
             if hazard == spikes or hazard == toxicspikes:
-                # if p1 is in sidestart line, then p2 played the hazard
-                if p1_name in line:
-                    match(hazard, player2)  # update the counter for player2
-                if p2_name in line:
-                    match(hazard, player1)  # update the counter for player1
+                if p1_name in line:                     # if p1 is in |-sidestart| line, then p2 played the hazard
+                    update_counter(hazard, player2)     # update the counter for player2
+                elif p2_name in line:
+                    update_counter(hazard, player1)     # update the counter for player1
 
-            # not spikes or toxicspikes
-            if p2_name in line:     # player1 played hazard
+            if p2_name in line:                         # player1 played hazard
                 return hazard, player1
-            elif p1_name in line:   # player2 played hazard
+            elif p1_name in line:                       # player2 played hazard
                 return hazard, player2
-            
+    
+    # if the line does not contain a hazard, check for screens
     for screen in classlabels["screens"]:
         if screen in line:
-            return get_screens(line)
+            if p1_name in line:
+                return screen, player1
+            elif p2_name in line:
+                return screen, player2
     return None, None
 
 # updates the appropriate counter for the spike and/or toxic spike hazard
-def match(hazard, player):
+def update_counter(hazard, player):
     global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
-    global player1_spikes, player2_spikes, player1_toxicspikes, player2_toxicspikes
 
     if player == player1:
         if hazard == spikes:
             if spike1_counter < 3:
                 spike1_counter += 1
-            if spike1_counter == 0:
-                player1_spikes = True
-            if check_spikes(spike1_counter):
-                spike1_counter += 1
-            
         elif hazard == toxicspikes:
-            if toxic1_counter == 0:
-                player1_toxicspikes = True
-            if check_toxicspikes(toxic1_counter):
+            if toxic1_counter < 2:
                 toxic1_counter += 1
             
     elif player == player2:
         if hazard == spikes:
-            if spike2_counter == 0:
-                player2_spikes = True
-            if check_spikes(spike2_counter):
+            if spike2_counter < 3:
                 spike2_counter += 1
-            
         elif hazard == toxicspikes:
-            if toxic2_counter == 0:
-                player2_toxicspikes = True
-            if check_toxicspikes(toxic2_counter):
+            if toxic2_counter < 2:
                 toxic2_counter += 1
     return None
-
-# checks that the value of the spike counter is below 3
-def check_spikes(counter):
-    if counter < 3:
-        return True
-    else:
-        return False
-
-# checks that the value of the toxic spike counter is below 2
-def check_toxicspikes(counter):
-    if counter < 2:
-        return True
-    else:
-        return False
 
 # checks if the weather is already in the player array
 def check_weather(weather, player_moves):
@@ -358,25 +277,10 @@ def check_terrain(terrain, player_moves):
 
 # checks if the hazard is already in the player array
 def check_hazard(hazard, player_moves):
-    for played_hazard in player_moves:
-        if hazard == played_hazard:
+    for played_moves in player_moves:
+        if hazard == played_moves:
             return True
     return False
-
-# returns the screen and the player that played it
-def get_screens(line):
-    global has_screen
-
-    # p1a uses screen (prev line: |move|p1a:) and is affected by it (|-sidestart|p1: )
-    for screen in classlabels["screens"]:
-        if screen in line:
-            has_screen = True
-
-            if p1_name in line:
-                return screen, player1
-            elif p2_name in line:
-                return screen, player2
-    return None, None
 
 # returns the outcome/winner of the battle
 def get_outcome(line, p1a, p2a):
@@ -389,7 +293,6 @@ def get_outcome(line, p1a, p2a):
 # sets the output to be printed to the output file
 def set_output():
     global p1_moves, p2_moves, spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
-    global has_weather, has_terrain, has_hazard, has_screen
 
     # holds the data that will be written to the output file
     data = []
@@ -397,6 +300,8 @@ def set_output():
     # iterate over player labels, check if each condition was played by the players
     for label in classlabels.keys():
         for condition in classlabels[label]:
+
+            # check if the condition was played by player1
             if condition in p1_moves:
                 if condition == spikes:
                     data.append(spike1_counter)
@@ -404,9 +309,9 @@ def set_output():
                     data.append(toxic1_counter)
                 else:
                     data.append('1')
-            else:
+            else:   # condition was not played by player1
                 data.append('0')
-            
+            # check if the condition was played by player2
             if condition in p2_moves:
                 if condition == spikes:
                     data.append(spike2_counter)
@@ -414,7 +319,7 @@ def set_output():
                     data.append(toxic2_counter)
                 else:
                     data.append('1')
-            else:
+            else:   # condition was not played by player2
                 data.append('0')
     return data
 
@@ -423,7 +328,6 @@ def print_data(data):
     for item in data:
         outputfile.write(f'{item},')
     outputfile.write('\n')
-
     return None
 
 
