@@ -7,12 +7,10 @@
             terrain, and hazards that are present.
 """
 import os
-import datetime
-
 
 # set folder path, output file name, and concatenate the output file path
-dirp = 'G:/Shared drives/final learning machine/testOutput' # "G:/Shared drives/final learning machine/logs/"
-out = 'atest.txt'    # "aout.txt"
+dirp = './logs/'
+out  = 'aout.txt'
 outfile = os.path.join(dirp, out)
 
 
