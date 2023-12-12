@@ -131,13 +131,13 @@ is_game_over  = False
 
 weather = None
 has_weather = False
-played_weather = None
+who_played_weather = None
 
 terrain = None
 has_terrain = False
-played_terrain = None
+who_played_terrain = None
 
-player_hazard = None
+who_played_hazard = None
 has_hazard    = False
 played_hazard = None
 
@@ -182,37 +182,50 @@ def print_headers():
 
 # resets all the variables to false or none
 def reset_vars():
-    return {
-        'is_game_over': False,
-        'p1_name': None,
-        'p2_name': None,
-        'has_weather': False,
-        'weather': None,
-        'played_weather': None,
-        'has_terrain': False,
-        'terrain': None,
-        'played_terrain': None,
-        'has_hazard': False,
-        'player_hazard': None,
-        'played_hazard': None,
-        'has_screen': False,
-        'screen': None,
-        'played_screen': None,
-        'spike1_counter': 0,
-        'toxic1_counter': 0,
-        'spike2_counter': 0,
-        'toxic2_counter': 0,
-        'player1_spikes': False,
-        'player2_spikes': False,
-        'player1_toxicspikes': False,
-        'player2_toxicspikes': False,
-        'p1_moves': [],
-        'p2_moves': [],
-    }
+    global p1_name, p2_name, is_game_over, has_weather, weather, played_weather
+    global has_terrain, terrain, played_terrain, has_hazard, player_hazard, played_hazard
+    global has_screen, screen, played_screen, spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
+    global player1_spikes, player2_spikes, player1_toxicspikes, player2_toxicspikes
+
+    is_game_over  = False
+    p1_name = None   # holds player1 username
+    p2_name = None   # holds player2 username
+
+    has_weather    = False
+    weather        = None
+    played_weather = None
+
+    has_terrain    = False
+    terrain        = None
+    played_terrain = None
+
+    has_hazard    = False
+    player_hazard = None
+    played_hazard = None
+
+    has_screen    = False
+    screen        = None
+    played_screen = None
+
+    spike1_counter = 0
+    toxic1_counter = 0
+    spike2_counter = 0
+    toxic2_counter = 0
+
+    player1_spikes = False
+    player2_spikes = False
+    player1_toxicspikes = False
+    player2_toxicspikes = False
+
+    return None
 
 # clears the arrays
 def clear_arrays():
-    return {'p1_moves': [], 'p2_moves': []}
+    global p1_moves, p2_moves
+
+    p1_moves.clear()
+    p2_moves.clear()
+    return None
 
 # function that returns the player name
 def set_player(line): 
@@ -451,13 +464,13 @@ for filename in os.listdir(dirp):
 
                 # if the line contains weather, get the weather and who played it
                 elif weather_line in line:
-                    weather, played_weather = get_weather(line)
-                    if played_weather == player1:
+                    weather, who_played_weather = get_weather(line)
+                    if who_played_weather == player1:
                         if check_weather(weather, p1_moves):
                             continue
                         else:
                             p1_moves.append(weather)
-                    elif played_weather == player2:
+                    elif who_played_weather == player2:
                         if check_weather(weather, p2_moves):
                             continue
                         else:
@@ -465,29 +478,29 @@ for filename in os.listdir(dirp):
 
                 # hazards and screens show up in the same line
                 elif hazard_line in line:
-                    hazard_played, player_hazard = get_hazard(line)
+                    hazard, who_played_hazard = get_hazard(line)
 
                     # if the hazard has been played by the player before, do not append
-                    if player_hazard == player1:
-                        if check_hazard(hazard_played, p1_moves):
+                    if who_played_hazard == player1:
+                        if check_hazard(hazard, p1_moves):
                             continue
                         else:
-                            p1_moves.append(hazard_played)
-                    elif player_hazard == player2:
-                        if check_hazard(hazard_played, p2_moves):
+                            p1_moves.append(hazard)
+                    elif who_played_hazard == player2:
+                        if check_hazard(hazard, p2_moves):
                             continue
                         else:
-                            p2_moves.append(hazard_played)
+                            p2_moves.append(hazard)
 
                 # if the line contains terrain, get the terrain and who played it
                 elif terrain_line in line:
-                    terrain, played_terrain = get_terrain(line)
-                    if played_terrain == player1:
+                    terrain, who_played_terrain = get_terrain(line)
+                    if who_played_terrain == player1:
                         if check_terrain(terrain, p1_moves):
                             continue
                         else:
                             p1_moves.append(terrain)
-                    elif played_terrain == player2:
+                    elif who_played_terrain == player2:
                         if check_terrain(terrain, p2_moves):
                             continue
                         else:
