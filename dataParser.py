@@ -10,7 +10,7 @@ import os
 
 
 # set folder path, output file name, and concatenate the output file path
-dirp = 'C:/Users/highd/Desktop/showdownLogs'
+dirp = '../showdownLogs'
 out  = 'a.txt'
 outfile = os.path.join(dirp, out)
 
