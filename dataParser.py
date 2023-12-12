@@ -27,8 +27,8 @@ electric    = "Electric Terrain"
 psychic     = "Psychic Terrain"
 trickroom   = "Trick Room"
 stealthrock = "Stealth Rock"
-spikes      = "Spikes"
 toxicspikes = "Toxic Spikes"
+spikes      = "Spikes"
 stickyweb   = "Sticky Web"
 reflect     = "Reflect"
 lightscreen = "Light Screen"
@@ -56,10 +56,10 @@ headers = {
     'trickroom2':trickroom,
     'stealthrock1':stealthrock,
     'stealthrock2':stealthrock,
-    'spikes1':spikes,
-    'spikes2':spikes,
     'toxicspikes1':toxicspikes,
     'toxicspikes2':toxicspikes,
+    'spikes1':spikes,
+    'spikes2':spikes,
     'stickyweb1':stickyweb,
     'stickyweb2':stickyweb,
     'reflect1':reflect,
@@ -75,7 +75,7 @@ headers = {
 classlabels = {
     "weather": [snow, rain, sunny, sand],
     "terrain": [grass, mist, electric, psychic, trickroom],
-    "hazards": [stealthrock, spikes, toxicspikes, stickyweb],
+    "hazards": [stealthrock, toxicspikes, spikes, stickyweb],
     "screens": [reflect, lightscreen, aurora, tailwind],
 }
 snow1      = "Snow1"
@@ -98,10 +98,10 @@ trickroom1 = "Trickroom1"
 trickroom2 = "Trickroom2"
 stealthrock1 = "Stealthrock1"
 stealthrock2 = "Stealthrock2"
-spikes1      = "Spikes1"
-spikes2      = "Spikes2"
 toxicspikes1 = "Toxicspikes1"
 toxicspikes2 = "Toxicspikes2"
+spikes1      = "Spikes1"
+spikes2      = "Spikes2"
 stickyweb1   = "Stickyweb1"
 stickyweb2   = "Stickyweb2"
 reflect1     = "Reflect1"
@@ -116,8 +116,8 @@ playerlabels = {
     "player_weather": [snow1, snow2, sunny1, sunny2, rain1, rain2, sand1, sand2],
     "player_terrain": [grass1, grass2, mist1, mist2, electric1, electric2, 
                        psychic1, psychic2, trickroom1, trickroom2],
-    "player_hazards": [stealthrock1, stealthrock2, spikes1, spikes2, 
-                       toxicspikes1, toxicspikes2, stickyweb1, stickyweb2],
+    "player_hazards": [stealthrock1, stealthrock2, toxicspikes1, toxicspikes2,
+                       spikes1, spikes2, stickyweb1, stickyweb2],
     "player_screens": [reflect1, reflect2, lightscreen1, lightscreen2, 
                        aurora1, aurora2, tailwind1, tailwind2],
 }
@@ -245,20 +245,20 @@ def update_counter(hazard, player):
     global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
 
     if player == player1:
-        if hazard == spikes:
-            if spike1_counter < 3:
-                spike1_counter += 1
-        elif hazard == toxicspikes:
+        if hazard == toxicspikes:
             if toxic1_counter < 2:
                 toxic1_counter += 1
+        elif hazard == spikes:
+            if spike1_counter < 3:
+                spike1_counter += 1
             
     elif player == player2:
-        if hazard == spikes:
-            if spike2_counter < 3:
-                spike2_counter += 1
-        elif hazard == toxicspikes:
+        if hazard == toxicspikes:
             if toxic2_counter < 2:
                 toxic2_counter += 1
+        elif hazard == spikes:
+            if spike2_counter < 3:
+                spike2_counter += 1
     return None
 
 # checks if the weather is already in the player array
