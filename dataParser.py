@@ -127,23 +127,21 @@ p1_name = None
 p2_name = None
 p1_moves = []
 p2_moves = []
+
 is_game_over  = False
+has_weather = False
+has_terrain = False
+has_hazard = False
+has_screen = False
 
 weather = None
-has_weather = False
-who_played_weather = None
-
 terrain = None
-has_terrain = False
-who_played_terrain = None
-
-who_played_hazard = None
-has_hazard    = False
-played_hazard = None
-
+hazard = None
 screen = None
-has_screen    = False
-played_screen = None
+
+who_played_weather = None
+who_played_terrain = None
+who_played_hazard  = None
 
 player1_spikes = False
 player2_spikes = False
@@ -156,10 +154,10 @@ toxic2_counter = 0
 
 # player 1 and player 2 return values
 player1 = 1
+player2 = 2 # i changed this from 1 to 2...since player1 is also set to 1, lol
 p1      = 'p1'
-p1a     = 'p1a'
-player2 = 1
 p2      = 'p2'
+p1a     = 'p1a'
 p2a     = 'p2a'
 play = '1'
 
@@ -296,27 +294,25 @@ def get_hazard(line):
             return get_screens(line)
     return None, None
 
-# updates the appropriate counter for the hazard
+# updates the appropriate counter for the spike and/or toxic spike hazard
 def match(hazard, player):
     global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
     global player1_spikes, player2_spikes, player1_toxicspikes, player2_toxicspikes
 
     if player == player1:
         if hazard == spikes:
+            if spike1_counter < 3:
+                spike1_counter += 1
             if spike1_counter == 0:
                 player1_spikes = True
             if check_spikes(spike1_counter):
                 spike1_counter += 1
-            else:
-                return 'spikes are above 3'
             
         elif hazard == toxicspikes:
             if toxic1_counter == 0:
                 player1_toxicspikes = True
             if check_toxicspikes(toxic1_counter):
                 toxic1_counter += 1
-            else:
-                return 'toxic spikes are above 2'
             
     elif player == player2:
         if hazard == spikes:
@@ -324,16 +320,12 @@ def match(hazard, player):
                 player2_spikes = True
             if check_spikes(spike2_counter):
                 spike2_counter += 1
-            else:
-                return 'spikes are above 3'
             
         elif hazard == toxicspikes:
             if toxic2_counter == 0:
                 player2_toxicspikes = True
             if check_toxicspikes(toxic2_counter):
                 toxic2_counter += 1
-            else:
-                return 'toxic spikes are above 2'
     return None
 
 # checks that the value of the spike counter is below 3
@@ -389,20 +381,20 @@ def get_screens(line):
 # returns the outcome/winner of the battle
 def get_outcome(line, p1a, p2a):
     if p1a in line:   
-        return '0'  # 1
+        return '0'  # player1 won
     elif p2a in line: 
-        return '1'  # 2
+        return '1'  # player2 won
     return None
 
 # sets the output to be printed to the output file
 def set_output():
-    global p1_moves, p2_moves
+    global p1_moves, p2_moves, spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
     global has_weather, has_terrain, has_hazard, has_screen
 
     # holds the data that will be written to the output file
     data = []
 
-    # iterate over player labels, check if each condition was played byt he players
+    # iterate over player labels, check if each condition was played by the players
     for label in classlabels.keys():
         for condition in classlabels[label]:
             if condition in p1_moves:
@@ -417,15 +409,14 @@ def set_output():
             
             if condition in p2_moves:
                 if condition == spikes:
-                    data.append(spike1_counter)
+                    data.append(spike2_counter)
                 elif condition == toxicspikes:
-                    data.append(toxic1_counter)
+                    data.append(toxic2_counter)
                 else:
                     data.append('1')
             else:
                 data.append('0')
     return data
-
 
 # writes the data to the output file
 def print_data(data):
