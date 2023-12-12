@@ -8,9 +8,10 @@
 """
 import os
 
+
 # set folder path, output file name, and concatenate the output file path
-dirp = './logs/'
-out  = 'aout.txt'
+dirp = 'C:/Users/highd/Desktop/showdownLogs'
+out  = 'a.txt'
 outfile = os.path.join(dirp, out)
 
 
@@ -126,13 +127,6 @@ p2_name = None
 p1_moves = []
 p2_moves = []
 
-is_game_over  = False
-
-spike1_counter = 0
-toxic1_counter = 0
-spike2_counter = 0
-toxic2_counter = 0
-
 # player 1 and player 2 return values
 player1 = 1
 player2 = 2 # i changed this from 1 to 2...since player1 is also set to 1, lol
@@ -149,6 +143,12 @@ terrain_line = '|-fieldstart|'
 hazard_line  = '|-sidestart|'
 win_line     = '|win|'
 
+# vars to be used in the main function
+is_game_over  = False
+spike1_counter = 0
+toxic1_counter = 0
+spike2_counter = 0
+toxic2_counter = 0
 
 """ function definitions """
 # writes headers
