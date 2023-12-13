@@ -1,9 +1,10 @@
-test.py
 lozonsArgParser.py
 ogDataParser.py
-dataParserTest.py
-dataParserv1.2.py
-dataParserv1.py
-zNOsomecommentedcode.txt
-zStringdata.txt
-zternarydata.txt
+cleanDataParser.py
+tests/dataParserTest.py
+tests/dataParserv1.2.py
+tests/dataParserv1.py
+tests/test.py
+tests/zNOsomecommentedcode.txt
+tests/zStringdata.txt
+tests/zternarydata.txt
