@@ -7,12 +7,25 @@
             terrain, and hazards that are present.
 """
 import os
-
+import argparse
 
 # set folder path, output file name, and concatenate the output file path
-dirp = '../showdownLogs'
-out  = 'a.txt'
-outfile = os.path.join(dirp, out)
+parser = argparse.ArgumentParser()
+parser.add_argument('-l', '--logdir', help='path to the folder that contains the log files to process.', type=str, default='logs')
+parser.add_argument('-o', '--outfile', help='name of the output file.', type=str, default='a.txt')
+parser.add_argument('-t', '--test', help='prints to console when true', action='store_true')
+
+
+args = parser.parse_args()
+logdir = args.logdir
+outfile = args.outfile
+test = args.test
+
+if not os.path.exists(logdir):
+    raise FileNotFoundError(f"The specified directory '{logdir}' does not exist.")
+if not os.listdir(logdir):
+    raise ValueError(f"The specified directory '{logdir}' is empty.")
+
 
 
 # global variables
@@ -129,7 +142,7 @@ p2_moves = []
 
 # player 1 and player 2 return values
 player1 = 1
-player2 = 2 # i changed this from 1 to 2...since player1 is also set to 1, lol
+player2 = 2
 p1      = 'p1'
 p2      = 'p2'
 p1a     = 'p1a'
@@ -141,6 +154,7 @@ p2_line      = '|player|p2|'
 weather_line = '|-weather|'
 terrain_line = '|-fieldstart|'
 hazard_line  = '|-sidestart|'
+hazard_end   = '|-sideend|'
 win_line     = '|win|'
 
 # vars to be used in the main function
@@ -149,6 +163,11 @@ spike1_counter = 0
 toxic1_counter = 0
 spike2_counter = 0
 toxic2_counter = 0
+player1_most_spikes = 0
+player2_most_spikes = 0
+player1_most_toxic_spikes = 0
+player2_most_toxic_spikes = 0
+
 
 """ function definitions """
 # writes headers
@@ -162,6 +181,7 @@ def print_headers():
 def reset_vars():
     global p1_name, p2_name, is_game_over
     global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
+    global player1_most_spikes, player2_most_spikes, player1_most_toxic_spikes, player2_most_toxic_spikes
 
     is_game_over  = False
     p1_name = None   # holds player1 username
@@ -170,6 +190,10 @@ def reset_vars():
     toxic1_counter = 0
     spike2_counter = 0
     toxic2_counter = 0
+    player1_most_spikes = 0
+    player2_most_spikes = 0
+    player1_most_toxic_spikes = 0
+    player2_most_toxic_spikes = 0
 
     return None
 
@@ -218,15 +242,9 @@ def get_hazard(line):
     # check if the line contains a hazard
     for hazard in classlabels["hazards"]:
         if hazard in line:
-            if hazard == spikes or hazard == toxicspikes:
-                if p1_name in line:                     # if p1 is in |-sidestart| line, then p2 played the hazard
-                    update_counter(hazard, player2)     # update the counter for player2
-                elif p2_name in line:
-                    update_counter(hazard, player1)     # update the counter for player1
-
-            if p2_name in line:                         # player1 played hazard
-                return hazard, player1
-            elif p1_name in line:                       # player2 played hazard
+            if p2_name in line:
+                return hazard, player1      # player1 played hazard
+            elif p1_name in line:           # player2 played hazard
                 return hazard, player2
     
     # if the line does not contain a hazard, check for screens
@@ -239,42 +257,70 @@ def get_hazard(line):
     return None, None
 
 # updates the appropriate counter for the spike and/or toxic spike hazard
-def update_counter(hazard, player):
+def increment_hazard_counter(hazard, player):
+    global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
+    global player1_most_spikes, player2_most_spikes, player1_most_toxic_spikes, player2_most_toxic_spikes
+
+    if player == player2:       # player1 played the hazard
+        if hazard == toxicspikes:
+            if toxic1_counter < 2:
+                toxic1_counter += 1
+            if toxic1_counter > player1_most_toxic_spikes:
+                player1_most_toxic_spikes = toxic1_counter
+        elif hazard == spikes:
+            if spike1_counter < 3:
+                spike1_counter += 1
+            if spike1_counter > player1_most_spikes:
+                player1_most_spikes = spike1_counter
+            
+    elif player == player1:     # player2 played the hazard
+        if hazard == toxicspikes:
+            if toxic2_counter < 2:
+                toxic2_counter += 1
+            if toxic2_counter > player2_most_toxic_spikes:
+                player2_most_toxic_spikes = toxic2_counter
+        elif hazard == spikes:
+            if spike2_counter < 3:
+                spike2_counter += 1
+            if spike2_counter > player2_most_spikes:
+                player2_most_spikes = spike2_counter
+
+    return None
+
+# reset the spike counters on spike removal (only necessary for accurate layer count for spikes)
+def reset_hazard_counter(hazard, player):
     global spike1_counter, toxic1_counter, spike2_counter, toxic2_counter
 
     if player == player1:
         if hazard == toxicspikes:
-            if toxic1_counter < 2:
-                toxic1_counter += 1
+            toxic1_counter = 0
         elif hazard == spikes:
-            if spike1_counter < 3:
-                spike1_counter += 1
+            spike1_counter = 0
             
     elif player == player2:
         if hazard == toxicspikes:
-            if toxic2_counter < 2:
-                toxic2_counter += 1
+            toxic2_counter = 0
         elif hazard == spikes:
-            if spike2_counter < 3:
-                spike2_counter += 1
+            spike2_counter = 0
+
     return None
 
 # checks if the weather is already in the player array
-def check_weather(weather, player_moves):
+def weather_already_played(weather, player_moves):
     for played_weather in player_moves:
         if weather == played_weather:
             return True
     return False
 
 # checks if the terrain is already in the player array
-def check_terrain(terrain, player_moves):
+def terrain_already_played(terrain, player_moves):
     for played_terrain in player_moves:
         if terrain == played_terrain:
             return True
     return False
 
 # checks if the hazard is already in the player array
-def check_hazard(hazard, player_moves):
+def hazard_already_played(hazard, player_moves):
     for played_moves in player_moves:
         if hazard == played_moves:
             return True
@@ -330,83 +376,82 @@ def print_data(data):
 
 
 
-""" main """
+
 # open the output file & write the headers to the file
-outputfile = open(outfile, "w")
-print_headers()
+if not test:
+    outputfile = open(outfile, "w")
+    print_headers()
+
+# get the logs from the folder
+logs = os.listdir(dir)
+print(f'{len(logs)} logs found in {dir}')
+print('Parsing logs...')
 
 # traverse the folder that contains the logs
-for filename in os.listdir(dirp):
-    # ignores any "a----" files, they're generated by lil ol me
-    if filename.endswith(".txt") or filename.endswith(".log") and not filename.startswith("a"):
-        
-        # set the file path & open the file
-        file_path = os.path.join(dirp, filename)
-        with open(file_path, 'r', encoding = 'utf8') as file:         
-            # reset the variables and clear the arrays
-            reset_vars()
-            clear_arrays()
+for filename in logs:
+    # set the file path and open the file
+    file_path = os.path.join(dir, filename)
+    with open(file_path, 'r', encoding = 'utf8') as file:         
+        # reset the variables and clear the arrays
+        reset_vars()
+        clear_arrays()
 
-            # iterate over each line in the file
-            for line in file:
-                # set the player names
-                if p1_line in line:
-                    p1_name = set_player(line)
-                elif p2_line in line:
-                    p2_name = set_player(line)
+        # iterate over each line in the file
+        for line in file:
+            # set the player names
+            if p1_line in line:
+                p1_name = set_player(line)
+            elif p2_line in line:
+                p2_name = set_player(line)
 
-                # if the line contains weather, get the weather and who played it
-                elif weather_line in line:
-                    weather, who_played_weather = get_weather(line)
-                    if who_played_weather == player1:
-                        if check_weather(weather, p1_moves):
-                            continue
-                        else:
-                            p1_moves.append(weather)
-                    elif who_played_weather == player2:
-                        if check_weather(weather, p2_moves):
-                            continue
-                        else:
-                            p2_moves.append(weather)
+            # if the line contains weather, get the weather and who played it
+            elif weather_line in line:
+                weather, who_played_weather = get_weather(line)
+                if who_played_weather == player1:
+                    if not weather_already_played(weather, p1_moves):
+                        p1_moves.append(weather)
+                elif who_played_weather == player2:
+                    if not weather_already_played(weather, p2_moves):
+                        p2_moves.append(weather)
 
-                # hazards and screens show up in the same line
-                elif hazard_line in line:
-                    hazard, who_played_hazard = get_hazard(line)
+            # hazards and screens show up in the same line
+            elif hazard_line in line:
+                hazard, who_played_hazard = get_hazard(line)
+                if hazard == toxicspikes or hazard == spikes:
+                    increment_hazard_counter(hazard, who_played_hazard)
 
-                    # if the hazard has been played by the player before, do not append
-                    if who_played_hazard == player1:
-                        if check_hazard(hazard, p1_moves):
-                            continue
-                        else:
-                            p1_moves.append(hazard)
-                    elif who_played_hazard == player2:
-                        if check_hazard(hazard, p2_moves):
-                            continue
-                        else:
-                            p2_moves.append(hazard)
+                # if the hazard has been played by the player before, do not append
+                if who_played_hazard == player1:
+                    if not hazard_already_played(hazard, p1_moves):
+                        p1_moves.append(hazard)
+                elif who_played_hazard == player2:
+                    if not hazard_already_played(hazard, p2_moves):
+                        p2_moves.append(hazard)
+            
+            # if the line contains the removal of a hazard, reset the counter
+            elif hazard_end in line:
+                hazard, who_played_hazard = get_hazard(line)
+                if hazard == toxicspikes or hazard == spikes:
+                    reset_hazard_counter(hazard, who_played_hazard)
 
-                # if the line contains terrain, get the terrain and who played it
-                elif terrain_line in line:
-                    terrain, who_played_terrain = get_terrain(line)
-                    if who_played_terrain == player1:
-                        if check_terrain(terrain, p1_moves):
-                            continue
-                        else:
-                            p1_moves.append(terrain)
-                    elif who_played_terrain == player2:
-                        if check_terrain(terrain, p2_moves):
-                            continue
-                        else:
-                            p2_moves.append(terrain)
+            # if the line contains terrain, get the terrain and who played it
+            elif terrain_line in line:
+                terrain, who_played_terrain = get_terrain(line)
+                if who_played_terrain == player1:
+                    if not terrain_already_played(terrain, p1_moves):
+                        p1_moves.append(terrain)
+                elif who_played_terrain == player2:
+                    if not terrain_already_played(terrain, p2_moves):
+                        p2_moves.append(terrain)
 
-                # if the line contains a win, get the outcome
-                elif win_line in line:
-                    if not is_game_over:
-                        is_game_over = True
-                        outcome = get_outcome(line, p1_name, p2_name)
+            # if the line contains a win, get the outcome
+            elif win_line in line:
+                if not is_game_over:
+                    is_game_over = True
+                    outcome = get_outcome(line, p1_name, p2_name)
 
-                # we are done with the file, now let's write to the output file but respect the order of the headers 
-                if is_game_over:
+            # we are done with the file, now write to the output file but respect the order of the headers 
+            if is_game_over:
 
                     # set the output to be printed to the output file
                     output = set_output()
@@ -414,8 +459,13 @@ for filename in os.listdir(dirp):
                     # append the outcome to the data array
                     output.append(outcome)
 
-                    # write the data to the output file
-                    print_data(output)
+                    # write the data to the output file or console, depending on the test flag
+                    if not test:
+                        print_data(output)
+                    else:
+                        for item in output: print(item, end=',')
+                        print()
 
                     break
-outputfile.close()
+
+if not test: outputfile.close()
